@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "7946908578",
+    "project_id": "fleshchatkg",
+    "storage_bucket": "fleshchatkg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:7946908578:android:e4883e24b834a06b3378fb",
+        "android_client_info": {
+          "package_name": "com.example.fleshchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "7946908578-70j0o04kcjtrc1bvppp4m4p1sqjb3oao.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCna4a4Rv6W62k-6Ua7HgLJN0YWwoPc8NY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "7946908578-70j0o04kcjtrc1bvppp4m4p1sqjb3oao.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
