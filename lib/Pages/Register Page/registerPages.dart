@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fleshchat/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -117,6 +118,8 @@ class _RegisterPageState extends State<RegisterPage> {
           InkWell(
             onTap: () {
               registerApp();
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePages()));
             },
             child: Container(
                 width: 360,

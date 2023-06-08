@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fleshchat/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -8,6 +10,16 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
+  Future<void> sinUpPhon() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+      phoneNumber: '+44 7123 123 456',
+      verificationCompleted: (PhoneAuthCredential credential) {},
+      verificationFailed: (FirebaseAuthException e) {},
+      codeSent: (String verificationId, int? resendToken) {},
+      codeAutoRetrievalTimeout: (String verificationId) {},
+    );
+  }
+
   final sizedBox = SizedBox(
     height: 30,
   );
@@ -48,7 +60,10 @@ class _LogInState extends State<LogIn> {
           ),
           sizedBox,
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomePages()));
+            },
             child: Container(
                 width: 360,
                 height: 60,
