@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fleshchat/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
@@ -20,12 +21,30 @@ class _RegisterPageState extends State<RegisterPage> {
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
 
+// Future<void> addUsers()async{
+
+// }
+  final users = FirebaseFirestore.instance.collection('users');
+  Future<void> UrModels() {
+    return users
+        .add({
+          'name': nameController.text,
+          'email': emailController.text,
+          'id': passwordController.text,
+        })
+        .then((value) => print("User Added"))
+        .catchError((error) => print("Failed to add user: $error"));
+    ;
+  }
+
   Future<void> registerApp() async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text,
-      );
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: emailController.text,
+            password: passwordController.text,
+          )
+          .then((value) => {UrModels()});
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
