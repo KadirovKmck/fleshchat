@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomePages extends StatefulWidget {
   const HomePages({Key? key}) : super(key: key);
-  static const String route = 'HomeP';
+  static const String route = 'HomePage';
 
   @override
   _HomePagesState createState() => _HomePagesState();
