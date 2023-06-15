@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
   const LogIn({super.key});
+  static const String route = 'SingUp';
 
   @override
   State<LogIn> createState() => _LogInState();
@@ -61,8 +62,7 @@ class _LogInState extends State<LogIn> {
           sizedBox,
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePages()));
+              Navigator.pushNamed(context, HomePages.route);
             },
             child: Container(
                 width: 360,

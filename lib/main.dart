@@ -1,4 +1,7 @@
+import 'package:fleshchat/Pages/Register%20Page/registerPages.dart';
 import 'package:fleshchat/Pages/Register%20Page/sing_in.dart';
+import 'package:fleshchat/Pages/homePage/home_pages.dart';
+import 'package:fleshchat/Pages/sing%20up/sing_up.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -17,6 +20,11 @@ class FleshChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        RegisterPage.route: (context) => const RegisterPage(),
+        LogIn.route: (context) => const LogIn(),
+        HomePages.route: (context) => const HomePages()
+      },
       debugShowCheckedModeBanner: false,
       home: FerstPage(),
       // home: HomePages(),

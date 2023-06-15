@@ -1,6 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:fleshchat/Pages/Register%20Page/registerPages.dart';
-import 'package:fleshchat/Pages/homePage/home_pages.dart';
 import 'package:fleshchat/Pages/sing%20up/sing_up.dart';
 import 'package:flutter/material.dart';
 
@@ -41,8 +40,7 @@ class _FerstPageState extends State<FerstPage> {
           sizedBox,
           InkWell(
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => LogIn()));
+              Navigator.pushNamed(context, LogIn.route);
             },
             child: Container(
                 width: 345,
@@ -59,8 +57,7 @@ class _FerstPageState extends State<FerstPage> {
           sizedBox,
           InkWell(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => RegisterPage()));
+              Navigator.pushNamed(context, RegisterPage.route);
             },
             child: Container(
                 width: 345,

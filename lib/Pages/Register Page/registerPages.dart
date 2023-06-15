@@ -6,9 +6,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
     super.key,
-    this.controller,
   });
-  final TextEditingController? controller;
+  static const String route = 'RegisterPage';
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -137,8 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
           InkWell(
             onTap: () {
               registerApp();
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePages()));
+              Navigator.pushNamed(context, HomePages.route);
             },
             child: Container(
                 width: 360,
