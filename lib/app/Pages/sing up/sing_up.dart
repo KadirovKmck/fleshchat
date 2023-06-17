@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fleshchat/Pages/homePage/home_pages.dart';
+import 'package:fleshchat/app/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -41,15 +41,36 @@ class _LogInState extends State<LogIn> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.text,
               cursorHeight: 45,
               obscureText: false,
               decoration: InputDecoration(
-                  hintText: 'enter your number ',
+                  hintText: 'Emter your name ',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.grey, width: 4)),
-                  labelText: 'enter your number',
+                  labelText: 'Emter your name ',
+                  labelStyle: TextStyle(
+                    color: Colors.black,
+                  ),
+                  focusColor: Colors.black,
+                  focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.black))),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: TextField(
+              keyboardType: TextInputType.text,
+              cursorHeight: 45,
+              obscureText: false,
+              decoration: InputDecoration(
+                  hintText: 'Emter your Password ',
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.grey, width: 4)),
+                  labelText: 'Emter your Password ',
                   labelStyle: TextStyle(
                     color: Colors.black,
                   ),

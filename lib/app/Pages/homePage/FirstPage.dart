@@ -1,10 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:fleshchat/Pages/Register%20Page/registerPages.dart';
-import 'package:fleshchat/Pages/sing%20up/sing_up.dart';
+import 'package:fleshchat/app/Pages/Register%20Page/registerPages.dart';
+import 'package:fleshchat/app/Pages/sing%20up/sing_up.dart';
 import 'package:flutter/material.dart';
 
 class FerstPage extends StatefulWidget {
   const FerstPage({super.key});
+  static const String route = 'FerstPage';
 
   @override
   State<FerstPage> createState() => _FerstPageState();

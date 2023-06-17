@@ -1,7 +1,7 @@
-import 'package:fleshchat/Pages/Register%20Page/registerPages.dart';
-import 'package:fleshchat/Pages/Register%20Page/sing_in.dart';
-import 'package:fleshchat/Pages/homePage/home_pages.dart';
-import 'package:fleshchat/Pages/sing%20up/sing_up.dart';
+import 'package:fleshchat/app/Pages/Register%20Page/registerPages.dart';
+import 'package:fleshchat/app/Pages/homePage/FirstPage.dart';
+import 'package:fleshchat/app/Pages/homePage/home_pages.dart';
+import 'package:fleshchat/app/Pages/sing%20up/sing_up.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -23,7 +23,8 @@ class FleshChat extends StatelessWidget {
       routes: {
         RegisterPage.route: (context) => const RegisterPage(),
         LogIn.route: (context) => const LogIn(),
-        HomePages.route: (context) => const HomePages()
+        HomePages.route: (context) => const HomePages(),
+        FerstPage.route: (context) => FerstPage(),
       },
       debugShowCheckedModeBanner: false,
       home: FerstPage(),
