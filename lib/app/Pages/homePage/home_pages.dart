@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fleshchat/app/Pages/homePage/FirstPage.dart';
 import 'package:fleshchat/app/Pages/widgets/drover.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,10 @@ class HomePages extends StatefulWidget {
 }
 
 class _HomePagesState extends State<HomePages> {
+  void logOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -35,6 +40,7 @@ class _HomePagesState extends State<HomePages> {
               IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, FerstPage.route);
+                  logOut();
                 },
                 icon: Icon(Icons.exit_to_app_sharp),
               ),
@@ -52,7 +58,7 @@ class _HomePagesState extends State<HomePages> {
           body: TabBarView(children: [
             Center(
               child: Text(
-                '⚡Cahts',
+                '⚡Chats',
                 style: TextStyle(
                     fontSize: 30,
                     color: Colors.blue,

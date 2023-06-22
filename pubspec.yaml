@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^4.6.2
   animated_text_kit: ^4.2.2
   cloud_firestore: ^4.8.0
+  shared_preferences: ^2.1.2
 
 dev_dependencies:
   flutter_test:

@@ -13,9 +13,8 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-TextEditingController Controller = TextEditingController();
-
 class _RegisterPageState extends State<RegisterPage> {
+  final _formfield = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -67,15 +66,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 color: Colors.white,
                 backgroundColor: Colors.blue)),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              controller: nameController,
-              cursorHeight: 45,
-              obscureText: false,
-              decoration: InputDecoration(
+      body: Form(
+        key: _formfield,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextFormField(
+                controller: nameController,
+                cursorHeight: 45,
+                obscureText: false,
+                decoration: InputDecoration(
                   hintText: 'enter your name',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -86,17 +87,24 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   focusColor: Colors.black,
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.black))),
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(color: Colors.black),
+                  ),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "enter your name";
+                  }
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              controller: emailController,
-              cursorHeight: 45,
-              obscureText: false,
-              decoration: InputDecoration(
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextFormField(
+                controller: emailController,
+                cursorHeight: 45,
+                obscureText: false,
+                decoration: InputDecoration(
                   hintText: 'enter your email',
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -108,49 +116,71 @@ class _RegisterPageState extends State<RegisterPage> {
                   focusColor: Colors.black,
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.black))),
+                      borderSide: BorderSide(color: Colors.black)),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter Email";
+                  }
+                  final bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value);
+                  if (!emailValid) {
+                    return "Enter Valid Email";
+                  }
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextField(
-              controller: passwordController,
-              cursorHeight: 45,
-              obscureText: false,
-              decoration: InputDecoration(
-                  hintText: 'enter your password',
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey, width: 4)),
-                  labelText: 'enter your password',
-                  labelStyle: TextStyle(
-                    color: Colors.black,
-                  ),
-                  focusColor: Colors.black,
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.black))),
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextFormField(
+                controller: passwordController,
+                cursorHeight: 45,
+                obscureText: false,
+                decoration: InputDecoration(
+                    hintText: 'enter your password',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey, width: 4)),
+                    labelText: 'enter your password',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                    ),
+                    focusColor: Colors.black,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.black))),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter Your Passcord";
+                  } else if (passwordController.text.length < 6) {
+                    return "Password Length Should be more than 6 characters";
+                  }
+                },
+              ),
             ),
-          ),
-          sizedBox,
-          InkWell(
-            onTap: () {
-              registerApp();
-              Navigator.pushNamed(context, HomePages.route);
-            },
-            child: Container(
-                width: 360,
-                height: 60,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
-                child: Center(
-                    child: Text(
-                  '⚡ Register',
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ))),
-          ),
-        ],
+            sizedBox,
+            InkWell(
+              onTap: () {
+                if (_formfield.currentState!.validate()) {
+                  registerApp();
+                  Navigator.pushNamed(context, HomePages.route);
+                }
+              },
+              child: Container(
+                  width: 360,
+                  height: 60,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Center(
+                      child: Text(
+                    '⚡ Register',
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ))),
+            ),
+          ],
+        ),
       ),
     );
   }

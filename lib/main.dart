@@ -20,6 +20,7 @@ class FleshChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: FerstPage.route,
       routes: {
         RegisterPage.route: (context) => const RegisterPage(),
         LogIn.route: (context) => const LogIn(),
@@ -27,7 +28,9 @@ class FleshChat extends StatelessWidget {
         FerstPage.route: (context) => FerstPage(),
       },
       debugShowCheckedModeBanner: false,
-      home: FerstPage(),
+      // home: FerstPage(),
+      // home: Auth(),
+      // home: Test(),
       // home: HomePages(),
     );
   }
