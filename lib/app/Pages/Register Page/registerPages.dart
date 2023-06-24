@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fleshchat/app/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/rendering.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({
@@ -18,6 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final nameController = TextEditingController();
   final passwordController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
 
 // Future<void> addUsers()async{
 
@@ -42,7 +44,13 @@ class _RegisterPageState extends State<RegisterPage> {
             email: emailController.text,
             password: passwordController.text,
           )
-          .then((value) => {UrModels()});
+          .then((value) => {
+                UrModels(),
+                nameController.clear(),
+                emailController.clear(),
+                passwordController.clear(),
+                confirmController.clear(),
+              });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -154,6 +162,35 @@ class _RegisterPageState extends State<RegisterPage> {
                   if (value!.isEmpty) {
                     return "Enter Your Passcord";
                   } else if (passwordController.text.length < 6) {
+                    return "Password Length Should be more than 6 characters";
+                  }
+                },
+              ),
+            ),
+            sizedBox,
+            Padding(
+              padding: const EdgeInsets.all(15),
+              child: TextFormField(
+                controller: confirmController,
+                cursorHeight: 45,
+                obscureText: false,
+                decoration: InputDecoration(
+                    hintText: 'enter your password',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.grey, width: 4)),
+                    labelText: 'enter your password',
+                    labelStyle: TextStyle(
+                      color: Colors.black,
+                    ),
+                    focusColor: Colors.black,
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(color: Colors.black))),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "Enter Your Confirm Password";
+                  } else if (value != passwordController) {
                     return "Password Length Should be more than 6 characters";
                   }
                 },

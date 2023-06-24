@@ -1,3 +1,4 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fleshchat/app/Pages/homePage/FirstPage.dart';
 import 'package:fleshchat/app/Pages/widgets/drover.dart';
@@ -23,11 +24,11 @@ class _HomePagesState extends State<HomePages> {
         initialIndex: 1,
         length: 3,
         child: Scaffold(
-          drawer: Drover(),
+          drawer: Drover(key: GlobalKey()),
           appBar: AppBar(
             bottom: const TabBar(tabs: [
               Tab(
-                text: 'Chats ',
+                text: 'Contacts',
               ),
               Tab(
                 text: 'Status',
@@ -36,15 +37,6 @@ class _HomePagesState extends State<HomePages> {
                 text: 'Calls 📞',
               ),
             ]),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, FerstPage.route);
-                  logOut();
-                },
-                icon: Icon(Icons.exit_to_app_sharp),
-              ),
-            ],
             title: Center(
               child: Text(
                 'Flesh Chat ⚡',
@@ -82,7 +74,7 @@ class _HomePagesState extends State<HomePages> {
                     color: Colors.blue,
                     fontWeight: FontWeight.bold),
               ),
-            )
+            ),
           ]),
         ),
       ),

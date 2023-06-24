@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fleshchat/app/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 
 class LogIn extends StatefulWidget {
@@ -104,7 +105,7 @@ class _LogInState extends State<LogIn> {
               onTap: () {
                 if (formKey.currentState!.validate()) {
                   singIn();
-                  Navigator.pushNamed(context, LogIn.route);
+                  Navigator.pushNamed(context, HomePages.route);
                 }
               },
               child: Container(
