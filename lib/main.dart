@@ -28,6 +28,7 @@ class FleshChat extends StatelessWidget {
         FerstPage.route: (context) => FerstPage(),
       },
       debugShowCheckedModeBanner: false,
+
       // home: FerstPage(),
       // home: Auth(),
       // home: Test(),

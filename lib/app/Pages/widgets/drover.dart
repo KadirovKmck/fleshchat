@@ -1,5 +1,6 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:fleshchat/app/Pages/Register%20Page/registerPages.dart';
+import 'package:fleshchat/app/Pages/homePage/FirstPage.dart';
 import 'package:fleshchat/app/Pages/homePage/home_pages.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +65,7 @@ class _DroverState extends State<Drover> {
             style: TextStyle(fontSize: 15, color: Colors.red),
           ),
           onTap: () {
-            Navigator.pushNamed(context, RegisterPage.route);
+            Navigator.pushNamed(context, FerstPage.route);
           },
         )
       ]),
